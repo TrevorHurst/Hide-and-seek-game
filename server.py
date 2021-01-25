@@ -1,5 +1,4 @@
 import socket
-import threading
     
 HOST = '192.168.1.53'  # Standard loopback interface address (localhost)
 PORT = 5000        # Port to listen on (non-privileged ports are > 1023)
