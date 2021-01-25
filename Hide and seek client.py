@@ -2,9 +2,8 @@ import turtle
 import socket
 import threading
 import time
-SOCK = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-CONNECTION = ('192.168.1.53',5000)
-SOCK.sendto('0,0,0'.encode(),CONNECTION)
+import random
+
 class Player:
   def __init__(s,x,y,d):
     s.d = d
@@ -22,11 +21,14 @@ class Player:
     
   def left(s):
     s.d+=10
+    
   def right(s):
     s.d-=10
+    
   def show(s):
     s.turtle.goto(s.x,s.y)
     s.turtle.seth(s.d)
+    
   def update(s,x,y,d):
     s.x = x
     s.y = y
@@ -53,28 +55,8 @@ def serverUpdate(player):
   if time.time()-TIME > .1:
     send(player)
     TIME = time.time()
-class RemotePlayer:
-  addressList = []
-  def __init__(s,IP,vals):
-    s.vals = vals.split(',')
-    s.x = int(s.vals[0])
-    s.y = int(s.vals[1])
-    s.d = int(s.vals[2])
-    s.address = IP
-    s.turtle = turtle.Turtle()
-    s.turtle.pu()
-    s.turtle.goto(s.x,s.y)
-    RemotePlayer.addressList.append(IP)
-  def update(s,vals):
-    s.vals = vals.split(',')
-    s.x = int(s.vals[0])
-    s.y = int(s.vals[1])
-    s.d = int(s.vals[2])
-    s.show()
-  def show(s):
-    s.turtle.goto(s.x,s.y)
-    s.turtle.seth(s.d)
-def findNewPlayers():
+
+def locateOtherPlayers():
   MYIP = socket.gethostbyname(socket.gethostname())
   for i in infFromServ:
     if i == MYIP:
@@ -93,7 +75,10 @@ TIME = 0
 player = Player(0,0,0)
 recievingThread = threading.Thread(target = recieve)
 recievingThread.start()
-import random
+
+SOCK = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+CONNECTION = ('192.168.1.53',5000)
+SOCK.sendto('0,0,0'.encode(),CONNECTION)
 
 window = turtle.Screen()
 window.listen()
@@ -103,5 +88,4 @@ window.onkeypress(player.right,"d")
 while True:
   player.show()
   serverUpdate(player)
-  findNewPlayers()
-  
+  locateOtherPlayers()
