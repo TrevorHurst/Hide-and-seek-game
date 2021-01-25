@@ -1,0 +1,14 @@
+Client:
+- Implement Hider vs Seeker
+- Implement Raycasting
+- Implement barriers that hiders can hide behind
+- Found or not found, do hiders become seekers?
+
+Server:
+- Implement seed for barriers
+- Voice chat?
+
+Server and Client:
+- Remove inactive players
+- Remove disconnected players
+- Commands? setplayerpos, setplayerdir, choosewhoisit?
