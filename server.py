@@ -13,16 +13,20 @@ while True:
         data, addr = s.recvfrom(1024)
     except:
         continue
+        
     if addr not in ADDRI:
         ADDRI.append(addr)
         print('Connection from,',addr)
+    
     for address in ADDRI:
         try:
             data = data.decode()
         except:
             pass
+        
         ip = addr[0]
         string = ip+' '+data
+        
         try:
             s.sendto(string.encode(), address)
         except:
