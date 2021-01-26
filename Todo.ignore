@@ -1,14 +1,44 @@
-Client:
-- Implement Hider vs Seeker
-- Implement Raycasting
-- Implement barriers that hiders can hide behind
-- Found or not found, do hiders become seekers?
-
-Server:
-- Implement seed for barriers
-- Voice chat?
-
-Server and Client:
-- Remove inactive players
-- Remove disconnected players
-- Commands? setplayerpos, setplayerdir, choosewhoisit?
+- Client:
+  - Implement Hider vs Seeker
+  - Implement Raycasting
+  - Implement barriers that hiders can hide behind
+  - Found or not found, do hiders become seekers?
+  - Customization
+    - Nicknames
+    - Color
+    - Pets?
+    - Trails
+  - Host and play
+  - Make player movement better
+  - Make camera focus on player
+- Server:
+  - Choose who will be seeker
+  - Private or public?
+  - Password
+  - Lan by default
+  - Choose port?
+  - plugins?
+  - Analytics
+- Server and Client
+  - Implement seed for barriers
+  - Remove inactive players
+  - Remove disconnected players
+  - Commands? 
+    - setplayerpos
+    - setplayerdir
+    - choosewhoisit
+    - ban
+    - kick?
+    - changenick
+    - Choose color
+  - Voice chat?
+    - Mute
+  - Props?
+    - Locking props?
+    - Box
+    - Triangle
+- Global Server:
+  - List servers close to player
+  - Show ping?
+  - Show server name
+  - Player count
